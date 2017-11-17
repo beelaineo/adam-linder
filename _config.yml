@@ -4,3 +4,5 @@ defaults:
       path: "img"
     values:
       image: true
+plugins:
+  - jekyll-assets
