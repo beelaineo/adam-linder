@@ -167,7 +167,7 @@ a {
 
 .image {
 	position: absolute;
-	width: 40vw;
+	width: 33vw;
 }
 
 .image img {
@@ -183,6 +183,11 @@ a {
 	}
 	.text {
 		padding: 2vh 5vw;
+		width: 60vw;
+	}
+	.image {
+		position: absolute;
+		width: 40vw;
 	}
 }
 
