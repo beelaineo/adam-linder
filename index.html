@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<main>
+	<div class="initial">
+		ADAM LINDER
+	</div>
+	{% assign image_files = site.static_files | where: "image", true %}
+	{% assign counter = 0 %}
+	{% assign total =image_files | size %}
+	{% assign position=100 | divided_by: total %}
+	{% for myimage in image_files %}
+	{% assign counter=counter | plus:1 %}
+	{% assign leftposition=position | times: counter %}
+	<div class="image card {{ counter }} stack" style="top: {{ leftposition }}vh; left: {{ leftposition }}vw; z-index: {{ counter }};">
+	  <img src="{{ myimage.path }}" />
+	</div>
+	{% endfor %}
+	
+	{% assign ztop=total | plus:2 %}	
+	{% for post in site.posts limit:50 %}
+	<div class="text {{post.title}} stack" style="z-index: {{ ztop }}">
+		<div class="content">
+			{{ post.content }}
+		</div>
+	</div>
+	{% endfor %}
+        
+</main>

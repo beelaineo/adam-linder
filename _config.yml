@@ -1,0 +1,6 @@
+name: Adam Linder
+defaults:
+  - scope:
+      path: "img"
+    values:
+      image: true

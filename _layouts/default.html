@@ -1,0 +1,98 @@
+{% capture build_version %}{{ site.time | date: "%Y%m%d%H%M%S" }}{% endcapture %}<!DOCTYPE HTML>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <title>Adam Linder</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    
+    {% if page.title %}
+    <meta property="og:title" content="{{ page.title }}">
+    <meta name="twitter:title" content="{{ page.title }}">
+      {% if page.description %}
+      <meta name="description" content="{{ page.description }}">
+      <meta name="og:description" content="{{ page.description }}">
+      <meta name="twitter:description" content="{{ page.description }}">
+      {% else if content %}
+      <meta name="description" content="{{ content | strip_html | truncatewords: 25 }}">
+      <meta name="og:description" content="{{ content | strip_html | truncatewords: 25 }}">
+      <meta name="twitter:description" content="{{ content | strip_html | truncatewords: 25 }}">
+      {% endif %}
+    {% else %}
+      <meta name="description" content="STAGE WORKS, CHOREOGRAPHIC SERVICES, COSTUME">
+    {% endif %}
+    {% if page.og_image_url %}
+    <meta property="og:image" content="{{ page.og_image_url }}">
+    <meta name="twitter:image" content="{{ page.og_image_url }}">
+    {% else %}
+    {% if page.photo_url %}
+    <meta property="og:image" content="{{ page.photo_url }}">
+    <meta name="twitter:image" content="{{ page.og_image_url }}">
+    {% endif %}
+    {% endif %}
+    <meta property="og:url" content="https://adam-linder.net{{ page.url | remove_first:'index.html' }}">
+    <meta property="og:site_name" content="Adam Linder">
+    <meta property="og:type" content="article" />
+    
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+  </head>
+    
+  <body>
+
+    {{ content }}
+
+	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+			
+			$( ".stack" ).draggable({ stack: ".stack", scroll: false });
+			
+			$(".stack").on("click", function(){
+				var widget = $(this).data('ui-draggable');
+			    widget._mouseStart(event);
+			    widget._mouseDrag(event);
+			    widget._mouseStop(event);
+			    if ($(this).hasClass("image")) {
+					$(this).toggleClass("zoom");
+			    }
+			});
+				
+	$(window).on("load", function() {
+	    
+	    
+	    $('.card').delay(1000).each(function( i ){
+		    var count = $(".card").length;
+			$(this).delay(500*i).fadeTo(250,1);
+			$('.text.info').delay(500*(count + 2)).fadeTo(250,1);
+		});	
+	    
+	});
+		
+
+		
+    </script>
+    
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+        ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    
+	</body>
+</html>
